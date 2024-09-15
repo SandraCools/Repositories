@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herberg code</title>
+    <style>
+        button {
+            color:white;
+            background-color: black;
+            margin: 50px;
+            padding: 20px 50px 20px 50px;
+            font-size: 24px;
+        }
+        input {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        #boodschap {
+            font-size: 36px;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; width: 100%; height: 100%; margin-top: 200px;">
+        <h1>Geef de code in:</h1>
+        <input type="password" id="invoerveld" maxlength="5" placeholder="*****" size="1">
+        <div>
+            <button type="button" onclick="controleerCode()" id="knop">CONTROLEER</button>
+        </div>
+        <audio src="succes.mp3" id="audio-success"></audio>
+    </div>
+    <div id="boodschap">
+
+    </div>
+
+    <script>
+        const code = 51044
+        var invoer = document.getElementById("invoerveld")
+        var knop = document.getElementById("knop")
+        
+
+        function controleerCode() {
+            var invoer = document.getElementById("invoerveld")
+            var boodschap = document.getElementById("boodschap")
+            var success = document.getElementById("audio-success")
+            document.body.style.backgroundColor
+            if (invoer.value == code) {
+                document.body.style.backgroundColor = "limeGreen"
+                boodschap.innerText = "Helemaal juist! Proficiat!"
+                success.play()
+            }
+            else {
+                document.body.style.backgroundColor = "red"
+                boodschap.innerText = "Oh nee, dat klopt niet..."
+            }
+            reset()
+            
+        }
+
+        function reset() {
+            setTimeout(function() {
+                document.body.style.backgroundColor = "white";
+                boodschap.innerText="";
+                invoer.value="";
+            }, 5000)
+        }
+
+    </script>
+</body>
+</html>
